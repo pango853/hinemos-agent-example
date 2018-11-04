@@ -1,0 +1,48 @@
+plugins {
+	id 'java'
+	id 'application'
+	id 'eclipse'
+}
+
+version = '1.0'
+
+def hinemosVersion = '6.1.2'
+mainClassName = 'App'
+applicationDefaultJvmArgs = ['-Dmanager.ip=127.0.0.1', '-Dmanager.user=hinemos', '-Dmanager.pswd=hinemos']
+
+repositories {
+	mavenCentral()
+	//jcenter()
+	//google()
+	maven { url 'http://pango853.github.io/mvnrepo' }
+}
+dependencies {
+	implementation group: 'info.hinemos', name: 'hinemos-common', version: hinemosVersion
+	implementation group: 'info.hinemos', name: 'client-ws', version: hinemosVersion
+	implementation group: 'info.hinemos', name: 'agent-ws', version: hinemosVersion
+
+	implementation group: 'commons-logging', name: 'commons-logging', version: '1.2'
+	implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+
+	testImplementation 'junit:junit:4.12'
+}
+
+eclipse.project.name = 'HinemosAgentExample'
+
+jar {
+	manifest {
+		 attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+	}
+}
+
+test {
+	systemProperties 'property': 'value'
+}
+
+uploadArchives {
+	repositories {
+		flatDir {
+			 dirs 'repos'
+		}
+	}
+}

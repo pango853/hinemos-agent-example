@@ -1,0 +1,22 @@
+Thumbs.db
+.DS_Store
+*~
+~*
+$*
+*.swp
+*.bak
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Java
+*.class
+*.jar
+/bin/
+/build/
+
+# Gradle
+.gradle/
+!gradle-wrapper.jar
